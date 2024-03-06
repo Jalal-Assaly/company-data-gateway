@@ -1,6 +1,5 @@
 package com.example.companydatagateway.models;
 
-import com.example.companydatagateway.entities.TimeSchedule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
