@@ -8,6 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -35,8 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee emp = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee ID does not exist in Company Database"));
 
+        // Adjust attributes to be compatible with PACS
+        int yearsOfExperience = LocalDate.now().getYear() - emp.getContractStart().getYear() + 1;
+
         return new EmployeeAttributesDTO(
                 emp.getId(), emp.getRole(), emp.getDepartment(), emp.getTimeSchedule(),
-                emp.getClearanceLevel(), emp.getEmploymentStatus(), emp.getContractStart());
+                emp.getClearanceLevel(), emp.getEmploymentStatus(), yearsOfExperience);
     }
 }

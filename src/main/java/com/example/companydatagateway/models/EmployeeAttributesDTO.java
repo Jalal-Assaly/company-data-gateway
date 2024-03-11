@@ -15,5 +15,5 @@ public class EmployeeAttributesDTO {
     private Map<String, Object> timeSchedule;
     private String clearanceLevel;
     private String employmentStatus;
-    private LocalDate contractStart;
+    private Integer yearsOfExperience;
 }
