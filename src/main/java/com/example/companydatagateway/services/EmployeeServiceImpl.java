@@ -1,8 +1,8 @@
 package com.example.companydatagateway.services;
 
 import com.example.companydatagateway.entities.Employee;
-import com.example.companydatagateway.models.EmployeeAttributesDTO;
-import com.example.companydatagateway.models.EmployeePersonalInfoDTO;
+import com.example.companydatagateway.models.EmployeeAttributesModel;
+import com.example.companydatagateway.models.EmployeePersonalInfoModel;
 import com.example.companydatagateway.repositories.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -23,23 +23,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeePersonalInfoDTO getEmployeePersonalInfo(String id) {
+    public EmployeePersonalInfoModel getEmployeePersonalInfo(String id) {
         Employee emp = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee ID does not exist in Company Database"));
 
-        return new EmployeePersonalInfoDTO(
+        return new EmployeePersonalInfoModel(
                 emp.getId(), emp.getSsn(), emp.getFirstName(), emp.getLastName(), emp.getEmail());
     }
 
     @Override
-    public EmployeeAttributesDTO getEmployeeAttributes(String id) {
+    public EmployeeAttributesModel getEmployeeAttributes(String id) {
         Employee emp = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee ID does not exist in Company Database"));
 
         // Adjust attributes to be compatible with PACS
         int yearsOfExperience = LocalDate.now().getYear() - emp.getContractStart().getYear() + 1;
 
-        return new EmployeeAttributesDTO(
+        return new EmployeeAttributesModel(
                 emp.getId(), emp.getRole(), emp.getDepartment(), emp.getTimeSchedule(),
                 emp.getClearanceLevel(), emp.getEmploymentStatus(), yearsOfExperience);
     }

@@ -1,8 +1,8 @@
 package com.example.companydatagateway.controllers;
 
 import com.example.companydatagateway.entities.Employee;
-import com.example.companydatagateway.models.EmployeeAttributesDTO;
-import com.example.companydatagateway.models.EmployeePersonalInfoDTO;
+import com.example.companydatagateway.models.EmployeeAttributesModel;
+import com.example.companydatagateway.models.EmployeePersonalInfoModel;
 import com.example.companydatagateway.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,14 +28,14 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}/info")
-    public ResponseEntity<EmployeePersonalInfoDTO> getEmployeePersonalInfo(@PathVariable String id) {
-        EmployeePersonalInfoDTO employeePersonalInfoDTO = employeeService.getEmployeePersonalInfo(id);
-        return new ResponseEntity<>(employeePersonalInfoDTO, HttpStatus.OK);
+    public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@PathVariable String id) {
+        EmployeePersonalInfoModel employeePersonalInfoModel = employeeService.getEmployeePersonalInfo(id);
+        return new ResponseEntity<>(employeePersonalInfoModel, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/attributes")
-    public ResponseEntity<EmployeeAttributesDTO> getEmployeeAttributes(@PathVariable String id) {
-        EmployeeAttributesDTO employeeAttributesDTO = employeeService.getEmployeeAttributes(id);
-        return new ResponseEntity<>(employeeAttributesDTO, HttpStatus.OK);
+    public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@PathVariable String id) {
+        EmployeeAttributesModel employeeAttributesModel = employeeService.getEmployeeAttributes(id);
+        return new ResponseEntity<>(employeeAttributesModel, HttpStatus.OK);
     }
 }

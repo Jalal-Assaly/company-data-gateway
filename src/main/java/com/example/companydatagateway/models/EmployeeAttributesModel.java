@@ -7,7 +7,7 @@ import java.util.Map;
 
 @Getter
 @AllArgsConstructor
-public class EmployeeAttributesDTO {
+public class EmployeeAttributesModel {
     private String id;
     private String role;
     private String department;
