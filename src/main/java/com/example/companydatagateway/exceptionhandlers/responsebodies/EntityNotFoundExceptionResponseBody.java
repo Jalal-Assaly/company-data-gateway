@@ -3,10 +3,12 @@ package com.example.companydatagateway.exceptionhandlers.responsebodies;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 import org.springframework.http.HttpStatusCode;
 
 import java.time.LocalDateTime;
 
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EntityNotFoundExceptionResponseBody {
     @JsonProperty("timestamp")
