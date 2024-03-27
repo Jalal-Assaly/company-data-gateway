@@ -27,13 +27,13 @@ public class EmployeeController {
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}/info")
+    @GetMapping("/find/{id}/info")
     public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@PathVariable String id) {
         EmployeePersonalInfoModel employeePersonalInfoModel = employeeService.getEmployeePersonalInfo(id);
         return new ResponseEntity<>(employeePersonalInfoModel, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}/attributes")
+    @GetMapping("/find/{id}/attributes")
     public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@PathVariable String id) {
         EmployeeAttributesModel employeeAttributesModel = employeeService.getEmployeeAttributes(id);
         return new ResponseEntity<>(employeeAttributesModel, HttpStatus.OK);
