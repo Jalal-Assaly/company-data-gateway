@@ -1,4 +1,4 @@
-package com.example.companydatagateway.entities;
+package org.pacs.companydatagatewayapi.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

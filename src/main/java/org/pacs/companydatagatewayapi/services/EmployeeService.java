@@ -1,9 +1,9 @@
-package com.example.companydatagateway.services;
+package org.pacs.companydatagatewayapi.services;
 
-import com.example.companydatagateway.entities.Employee;
-import com.example.companydatagateway.models.EmployeeAttributesModel;
-import com.example.companydatagateway.models.EmployeePersonalInfoModel;
-import com.example.companydatagateway.repositories.EmployeeRepository;
+import org.pacs.companydatagatewayapi.entities.Employee;
+import org.pacs.companydatagatewayapi.models.EmployeeAttributesModel;
+import org.pacs.companydatagatewayapi.models.EmployeePersonalInfoModel;
+import org.pacs.companydatagatewayapi.repositories.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,9 @@
-package com.example.companydatagateway.controllers;
+package org.pacs.companydatagatewayapi.controllers;
 
-import com.example.companydatagateway.entities.Employee;
-import com.example.companydatagateway.models.EmployeeAttributesModel;
-import com.example.companydatagateway.models.EmployeePersonalInfoModel;
-import com.example.companydatagateway.services.EmployeeService;
+import org.pacs.companydatagatewayapi.entities.Employee;
+import org.pacs.companydatagatewayapi.models.EmployeeAttributesModel;
+import org.pacs.companydatagatewayapi.models.EmployeePersonalInfoModel;
+import org.pacs.companydatagatewayapi.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

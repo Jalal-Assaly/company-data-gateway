@@ -1,10 +1,10 @@
-package com.example.companydatagateway;
+package org.pacs.companydatagatewayapi;
 
-import com.example.companydatagateway.entities.Employee;
-import com.example.companydatagateway.models.EmployeeAttributesModel;
-import com.example.companydatagateway.models.EmployeePersonalInfoModel;
-import com.example.companydatagateway.repositories.EmployeeRepository;
-import com.example.companydatagateway.services.EmployeeService;
+import org.pacs.companydatagatewayapi.entities.Employee;
+import org.pacs.companydatagatewayapi.models.EmployeeAttributesModel;
+import org.pacs.companydatagatewayapi.models.EmployeePersonalInfoModel;
+import org.pacs.companydatagatewayapi.repositories.EmployeeRepository;
+import org.pacs.companydatagatewayapi.services.EmployeeService;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

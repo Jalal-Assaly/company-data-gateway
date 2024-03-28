@@ -1,4 +1,4 @@
-package com.example.companydatagateway.entities;
+package org.pacs.companydatagatewayapi.entities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

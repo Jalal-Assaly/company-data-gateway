@@ -1,4 +1,4 @@
-package com.example.companydatagateway.exceptionhandlers.responsebodies;
+package org.pacs.companydatagatewayapi.exceptionhandlers.responsebodies;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

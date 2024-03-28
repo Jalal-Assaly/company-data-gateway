@@ -1,6 +1,6 @@
-package com.example.companydatagateway.exceptionhandlers;
+package org.pacs.companydatagatewayapi.exceptionhandlers;
 
-import com.example.companydatagateway.exceptionhandlers.responsebodies.EntityNotFoundExceptionResponseBody;
+import org.pacs.companydatagatewayapi.exceptionhandlers.responsebodies.EntityNotFoundExceptionResponseBody;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

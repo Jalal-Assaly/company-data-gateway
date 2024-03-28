@@ -1,4 +1,4 @@
-package com.example.companydatagateway;
+package org.pacs.companydatagatewayapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

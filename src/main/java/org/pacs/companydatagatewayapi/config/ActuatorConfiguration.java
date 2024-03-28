@@ -1,4 +1,4 @@
-package com.example.companydatagateway.config;
+package org.pacs.companydatagatewayapi.config;
 
 import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
 import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;

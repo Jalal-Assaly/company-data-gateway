@@ -1,9 +1,9 @@
-package com.example.companydatagateway.models;
+package org.pacs.companydatagatewayapi.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 @AllArgsConstructor
 public class EmployeePersonalInfoModel {
     private String id;
