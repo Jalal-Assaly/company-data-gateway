@@ -117,45 +117,45 @@ public class EmployeeServiceTest {
 
         List<Employee> actualEmployees = employeeService.getAllEmployees();
 
-        verify(employeeRepository).findAll();  // Verify 'findAll' on the repository was called
+        verify(employeeRepository).findAll();
         assertThat(actualEmployees).hasSize(2);
         assertThat(actualEmployees.get(0)).usingRecursiveComparison().isEqualTo(testEmployee1);
         assertThat(actualEmployees.get(1)).usingRecursiveComparison().isEqualTo(testEmployee2);
     }
 
     @Test void getEmployeePersonalInfo_Success() {
-        when(employeeRepository.findById(testEmployee1.getId())).thenReturn(Optional.of(testEmployee1));
+        when(employeeRepository.findByEmail(testEmployee1.getEmail())).thenReturn(Optional.of(testEmployee1));
 
         EmployeePersonalInfoModel actualEmployeePersonalInfoModel =
-                employeeService.getEmployeePersonalInfo(testEmployee1.getId());
+                employeeService.getEmployeePersonalInfo(testEmployee1.getEmail());
 
-        verify(employeeRepository).findById(any(String.class));
+        verify(employeeRepository).findByEmail(any(String.class));
         assertThat(actualEmployeePersonalInfoModel).usingRecursiveComparison().isEqualTo(testEmployeePersonalInfoModel1);
     }
 
     @Test void getEmployeePersonalInfo_NotFound() {
-        when(employeeRepository.findById("xyz")).thenReturn(Optional.empty());
+        when(employeeRepository.findByEmail("xyz")).thenReturn(Optional.empty());
 
         assertThatThrownBy(() -> employeeService.getEmployeePersonalInfo("xyz"))
                 .isInstanceOf(EntityNotFoundException.class)
-                .hasMessage("Employee ID does not exist in Company Database");
+                .hasMessage("Employee Email does not exist in Company Database");
     }
 
     @Test void getEmployeeAttributes_Success() {
-        when(employeeRepository.findById(testEmployee2.getId())).thenReturn(Optional.of(testEmployee2));
+        when(employeeRepository.findByEmail(testEmployee2.getEmail())).thenReturn(Optional.of(testEmployee2));
 
         EmployeeAttributesModel actualEmployeeAttributesModel =
-                employeeService.getEmployeeAttributes(testEmployee2.getId());
+                employeeService.getEmployeeAttributes(testEmployee2.getEmail());
 
-        verify(employeeRepository).findById(any(String.class));
+        verify(employeeRepository).findByEmail(any(String.class));
         assertThat(actualEmployeeAttributesModel).usingRecursiveComparison().isEqualTo(testEmployeeAttributesModel2);
     }
 
     @Test void getEmployeeAttributes_NotFound() {
-        when(employeeRepository.findById("xyz")).thenReturn(Optional.empty());
+        when(employeeRepository.findByEmail("xyz")).thenReturn(Optional.empty());
 
         assertThatThrownBy(() -> employeeService.getEmployeeAttributes("xyz"))
                 .isInstanceOf(EntityNotFoundException.class)
-                .hasMessage("Employee ID does not exist in Company Database");
+                .hasMessage("Employee Email does not exist in Company Database");
     }
 }
