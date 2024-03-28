@@ -21,16 +21,16 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public EmployeePersonalInfoModel getEmployeePersonalInfo(String id) {
-        Employee emp = employeeRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Employee ID does not exist in Company Database"));
+    public EmployeePersonalInfoModel getEmployeePersonalInfo(String email) {
+        Employee emp = employeeRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("Employee Email does not exist in Company Database"));
         return new EmployeePersonalInfoModel(
                 emp.getId(), emp.getSsn(), emp.getFirstName(), emp.getLastName(), emp.getEmail());
     }
 
-    public EmployeeAttributesModel getEmployeeAttributes(String id) {
-        Employee emp = employeeRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Employee ID does not exist in Company Database"));
+    public EmployeeAttributesModel getEmployeeAttributes(String email) {
+        Employee emp = employeeRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("Employee Email does not exist in Company Database"));
 
         // Adjust attributes to be compatible with PACS
         int yearsOfExperience = LocalDate.now().getYear() - emp.getContractStart().getYear() + 1;

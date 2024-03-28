@@ -7,10 +7,7 @@ import com.example.companydatagateway.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,15 +24,15 @@ public class EmployeeController {
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @GetMapping("/find/id/{id}/info")
-    public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@PathVariable String id) {
-        EmployeePersonalInfoModel employeePersonalInfoModel = employeeService.getEmployeePersonalInfo(id);
+    @GetMapping("/find/info/email")
+    public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@RequestParam String email) {
+        EmployeePersonalInfoModel employeePersonalInfoModel = employeeService.getEmployeePersonalInfo(email);
         return new ResponseEntity<>(employeePersonalInfoModel, HttpStatus.OK);
     }
 
-    @GetMapping("/find/id/{id}/attributes")
-    public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@PathVariable String id) {
-        EmployeeAttributesModel employeeAttributesModel = employeeService.getEmployeeAttributes(id);
+    @GetMapping("/find/attributes/email")
+    public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@RequestParam String email) {
+        EmployeeAttributesModel employeeAttributesModel = employeeService.getEmployeeAttributes(email);
         return new ResponseEntity<>(employeeAttributesModel, HttpStatus.OK);
     }
 }
