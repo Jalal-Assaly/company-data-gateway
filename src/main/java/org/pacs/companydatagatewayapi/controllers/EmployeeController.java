@@ -24,14 +24,14 @@ public class EmployeeController {
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @GetMapping("/find/info/email")
-    public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@RequestParam String email) {
+    @GetMapping("/find/info/email/{email}")
+    public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@PathVariable String email) {
         EmployeePersonalInfoModel employeePersonalInfoModel = employeeService.getEmployeePersonalInfo(email);
         return new ResponseEntity<>(employeePersonalInfoModel, HttpStatus.OK);
     }
 
-    @GetMapping("/find/attributes/email")
-    public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@RequestParam String email) {
+    @GetMapping("/find/attributes/email/{email}")
+    public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@PathVariable String email) {
         EmployeeAttributesModel employeeAttributesModel = employeeService.getEmployeeAttributes(email);
         return new ResponseEntity<>(employeeAttributesModel, HttpStatus.OK);
     }
