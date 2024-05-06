@@ -1,7 +1,7 @@
 package org.pacs.companydatagatewayapi.controllers;
 
-import org.pacs.companydatagatewayapi.entities.Employee;
 import org.pacs.companydatagatewayapi.models.EmployeeAttributesModel;
+import org.pacs.companydatagatewayapi.models.EmployeeModel;
 import org.pacs.companydatagatewayapi.models.EmployeePersonalInfoModel;
 import org.pacs.companydatagatewayapi.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -19,20 +19,26 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping("all")
-    public ResponseEntity<List<Employee>> getAllEmployees() {
-        List<Employee> employees = employeeService.getAllEmployees();
+    public ResponseEntity<List<EmployeeModel>> getAllEmployees() {
+        List<EmployeeModel> employees = employeeService.getAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @GetMapping("/find/info/email/{email}")
     public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@PathVariable String email) {
         EmployeePersonalInfoModel employeePersonalInfoModel = employeeService.getEmployeePersonalInfo(email);
+
+        System.out.println(employeePersonalInfoModel);
+
         return new ResponseEntity<>(employeePersonalInfoModel, HttpStatus.OK);
     }
 
     @GetMapping("/find/attributes/email/{email}")
     public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@PathVariable String email) {
         EmployeeAttributesModel employeeAttributesModel = employeeService.getEmployeeAttributes(email);
+
+        System.out.println(employeeAttributesModel);
+
         return new ResponseEntity<>(employeeAttributesModel, HttpStatus.OK);
     }
 }

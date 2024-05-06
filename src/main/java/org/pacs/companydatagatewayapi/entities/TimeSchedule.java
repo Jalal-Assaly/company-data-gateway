@@ -1,16 +1,18 @@
 package org.pacs.companydatagatewayapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalTime;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 public class TimeSchedule implements Serializable {
-    private LocalTime startTime;
-    private LocalTime endTime;
-    private Set<String> daysOfWeek;
+    @JsonProperty("ST")
+    private Object startTime;
+    @JsonProperty("ET")
+    private Object endTime;
+    @JsonProperty("DW")
+    private Object daysOfWeek;
 }

@@ -1,7 +1,9 @@
 package org.pacs.companydatagatewayapi;
 
 import org.pacs.companydatagatewayapi.entities.Employee;
+import org.pacs.companydatagatewayapi.entities.TimeSchedule;
 import org.pacs.companydatagatewayapi.models.EmployeeAttributesModel;
+import org.pacs.companydatagatewayapi.models.EmployeeModel;
 import org.pacs.companydatagatewayapi.models.EmployeePersonalInfoModel;
 import org.pacs.companydatagatewayapi.repositories.EmployeeRepository;
 import org.pacs.companydatagatewayapi.services.EmployeeService;
@@ -31,9 +33,11 @@ public class EmployeeServiceTest {
     private EmployeeService employeeService;
 
     Employee testEmployee1;
+    EmployeeModel testEmployeeModel1;
     EmployeeAttributesModel testEmployeeAttributesModel1;
     EmployeePersonalInfoModel testEmployeePersonalInfoModel1;
     Employee testEmployee2;
+    EmployeeModel testEmployeeModel2;
     EmployeeAttributesModel testEmployeeAttributesModel2;
     EmployeePersonalInfoModel testEmployeePersonalInfoModel2;
 
@@ -42,12 +46,22 @@ public class EmployeeServiceTest {
         Map<String, Object> timeSchedule1 = Map.of(
                 "startTime", LocalTime.of(9, 0),
                 "endTime", LocalTime.of(17, 0),
-                "daysOfWeek", new HashSet<>(Arrays.asList("Monday", "Tuesday", "Thursday", "Friday")));
+                "daysOfWeek", new HashSet<>(Arrays.asList("Mon", "Tue", "Thu", "Fri")));
+
+        TimeSchedule timeScheduleObject1 = new TimeSchedule(
+                LocalTime.of(9, 0),
+                LocalTime.of(17, 0),
+                new HashSet<>(Arrays.asList("Mon", "Tue", "Thu", "Fri")));
 
         Map<String, Object> timeSchedule2 = Map.of(
                 "startTime", LocalTime.of(13, 0),
                 "endTime", LocalTime.of(21, 0),
-                "daysOfWeek", new HashSet<>(Arrays.asList("Monday", "Wednesday", "Friday")));
+                "daysOfWeek", new HashSet<>(Arrays.asList("Mon", "Wed", "Fri")));
+
+        TimeSchedule timeScheduleObject2 = new TimeSchedule(
+                LocalTime.of(13, 0),
+                LocalTime.of(21, 0),
+                new HashSet<>(Arrays.asList("Mon", "Wed", "Fri")));
 
         testEmployee1 = new Employee(
                 "3",
@@ -58,6 +72,19 @@ public class EmployeeServiceTest {
                 "Coordinator",
                 "HR",
                 timeSchedule1,
+                "Level 3",
+                "Full-time",
+                LocalDate.of(2012,3, 3));
+
+        testEmployeeModel1 = new EmployeeModel(
+                "3",
+                "555-55-5555",
+                "Michael",
+                "Johnson",
+                "michael.johnson@example.com",
+                "Coordinator",
+                "HR",
+                timeScheduleObject1,
                 "Level 3",
                 "Full-time",
                 LocalDate.of(2012,3, 3));
@@ -74,10 +101,9 @@ public class EmployeeServiceTest {
                 "3",
                 "Coordinator",
                 "HR",
-                timeSchedule1,
+                timeScheduleObject2,
                 "Level 3",
-                "Full-time",
-                10
+                "Full-time"
         );
 
         testEmployee2 = new Employee(
@@ -89,6 +115,19 @@ public class EmployeeServiceTest {
                 "Analyst",
                 "Finance",
                 timeSchedule2,
+                "Level 2",
+                "Full-time",
+                LocalDate.of(2005,3, 4));
+
+        testEmployeeModel2 = new EmployeeModel(
+                "4",
+                "333-33-3333",
+                "Emily",
+                "Brown",
+                "emily.brown@example.com",
+                "Analyst",
+                "Finance",
+                timeScheduleObject2,
                 "Level 2",
                 "Full-time",
                 LocalDate.of(2005,3, 4));
@@ -105,22 +144,21 @@ public class EmployeeServiceTest {
                 "4",
                 "Analyst",
                 "Finance",
-                timeSchedule2,
+                timeScheduleObject2,
                 "Level 2",
-                "Full-time",
-                20
+                "Full-time"
         );
     }
 
     @Test void testGetAllEmployees() {
         when(employeeRepository.findAll()).thenReturn(Arrays.asList(testEmployee1, testEmployee2));
 
-        List<Employee> actualEmployees = employeeService.getAllEmployees();
+        List<EmployeeModel> actualEmployees = employeeService.getAllEmployees();
 
         verify(employeeRepository).findAll();
         assertThat(actualEmployees).hasSize(2);
-        assertThat(actualEmployees.get(0)).usingRecursiveComparison().isEqualTo(testEmployee1);
-        assertThat(actualEmployees.get(1)).usingRecursiveComparison().isEqualTo(testEmployee2);
+        assertThat(actualEmployees.get(0)).usingRecursiveComparison().isEqualTo(testEmployeeModel1);
+        assertThat(actualEmployees.get(1)).usingRecursiveComparison().isEqualTo(testEmployeeModel2);
     }
 
     @Test void getEmployeePersonalInfo_Success() {
