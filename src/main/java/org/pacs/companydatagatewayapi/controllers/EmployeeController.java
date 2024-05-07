@@ -27,18 +27,12 @@ public class EmployeeController {
     @GetMapping("/find/info/email/{email}")
     public ResponseEntity<EmployeePersonalInfoModel> getEmployeePersonalInfo(@PathVariable String email) {
         EmployeePersonalInfoModel employeePersonalInfoModel = employeeService.getEmployeePersonalInfo(email);
-
-        System.out.println(employeePersonalInfoModel);
-
         return new ResponseEntity<>(employeePersonalInfoModel, HttpStatus.OK);
     }
 
     @GetMapping("/find/attributes/email/{email}")
     public ResponseEntity<EmployeeAttributesModel> getEmployeeAttributes(@PathVariable String email) {
         EmployeeAttributesModel employeeAttributesModel = employeeService.getEmployeeAttributes(email);
-
-        System.out.println(employeeAttributesModel);
-
         return new ResponseEntity<>(employeeAttributesModel, HttpStatus.OK);
     }
 }
